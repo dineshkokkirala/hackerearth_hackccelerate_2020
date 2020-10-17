@@ -5,9 +5,8 @@ import {validationResult,check} from "express-validator";
 import bcrypt from "bcryptjs"
 import jwt from 'jsonwebtoken'
 import auth from '../middleware/auth.js'
+import Profile from '../models/profileModel.js'
 const router = express.Router();
-
-
 
 
 //Register  route
@@ -118,6 +117,62 @@ router.get("/",auth,async(req,res)=>{
         return res.status(500).send("Internal Server Error");
     }
 })
+
+
+
+// Add your profile data
+// POST     /api/user/profile
+// access   Private
+router.post("/profile",[auth,[
+    check("age","Age is required").not().isEmpty(),
+    check("weight","Weight is required").not().isEmpty(),
+    check("height","Height is required").not().isEmpty(),
+    check("gender","Gender is required").not().isEmpty(),
+    check("fitnessgoals","Please add your fitness goals").not().isEmpty()
+]],async(req,res)=>{
+    const errors = validationResult(req);
+    if(!errors.isEmpty()){
+        return res.status(400).json({errors:errors.array()})
+    }
+    let profile_data={};
+    profile_data.user=req.user._id;
+    const {age,weight,height,gender,fitnessgoals} =req.body;
+    if(age) profile_data.age=age;
+    if(weight) profile_data.weight=weight
+    if(height) profile_data.height=height
+    if(gender) profile_data.gender=gender
+    if(typeof fitnessgoals!=="undefined"){
+        profile_data.fitnessgoals=fitnessgoals.split(",");
+    }
+
+    try {
+        const profile = new Profile(profile_data);
+        await profile.save();
+        res.json(profile);
+    } catch (err) {
+        console.log(err.message);
+        return res.status(500).json({"msg":"Internal Server Error"})
+    }
+
+})
+
+
+// Get your own profile
+// GET      /api/user/profile/own
+// Access   Private
+router.get("/profile/own",auth,async(req,res)=>{
+    try{
+        const user_profile=await Profile.findOne({user:req.user._id})
+        if(user_profile!==null)
+        return res.json(user_profile);
+        res.json({"msg":"You don't have any profile"})
+    }
+    catch(err){
+        console.log(err.message);
+        res.status(500).json({"msg":"Internal Server Error"});
+    }
+})
+
 
 
 export default router
