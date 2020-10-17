@@ -6,17 +6,16 @@ import bcrypt from "bcryptjs"
 
 const router = express.Router();
 router.post("/register",[
-    check("username","Enter your username").exists(),
-    check("email","Email must be a valid email").isEmail()
+    check("username","Enter your username").not().isEmpty(),
+    check("email","Email must be a valid email").isEmail(),
+    check("passowrd","Password must be 6 characters").isLength({min:6})
 ],async(req,res)=>{
 
         const errors = validationResult(req);
         if(!errors.isEmpty()){
             return res.status(400).json({errors:errors.array()});
         }
-
-    try {
-        
+    try { 
         const data={
             username:req.body.username,
             email:req.body.email,

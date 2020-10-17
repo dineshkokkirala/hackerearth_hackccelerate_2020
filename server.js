@@ -12,7 +12,7 @@ connectDB();
 
 
 app.get('/',(req,res)=>{
-    res.send(`KAND........${process.env.TEST}`);
+    res.send(`KAND........`);
 })
 
 
