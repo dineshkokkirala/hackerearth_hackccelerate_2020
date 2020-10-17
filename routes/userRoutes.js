@@ -4,7 +4,7 @@ import User from '../models/userModel.js'
 import {validationResult,check} from "express-validator";
 import bcrypt from "bcryptjs"
 import jwt from 'jsonwebtoken'
-
+import auth from '../middleware/auth.js'
 const router = express.Router();
 
 
@@ -101,6 +101,22 @@ router.post("/login",[
         return res.status(500).send("Internal Server Error");
     }
 
+})
+
+
+// Get all details pf loggedIn user
+// GET      /api/user
+// access   private
+router.get("/",auth,async(req,res)=>{
+    try {
+        
+        const user=await User.findById(req.user._id).select("-password");
+        res.json(user)
+
+    } catch (err) {
+        console.log(err.message);
+        return res.status(500).send("Internal Server Error");
+    }
 })
 
 
