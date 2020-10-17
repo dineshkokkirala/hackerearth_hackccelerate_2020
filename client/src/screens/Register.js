@@ -1,6 +1,7 @@
 import React,{useContext,useState,useEffect} from 'react'
 import AuthContext from "../context/auth/authContext";
 import AlertContext from "../context/alert/alertContext"
+import { Link } from 'react-router-dom';
 const Register = (props) => {
     const authContext = useContext(AuthContext);
     const alertContext = useContext(AlertContext);
@@ -73,8 +74,10 @@ const Register = (props) => {
                 <label htmlFor="password2">Confirm Password</label>
                 <input type="password" className="form-control" name="password2" id="password2" onChange={onChange} value={password2} />
             </div>
-            <button className="btn btn-block btn-success" onClick={onSubmit} >Register</button>
+            <button className="btn btn-block btn-success mb-4" onClick={onSubmit} >Register</button>
+            <Link to="/login" style={{textDecoration:"none"}}><button className="btn btn-block btn-light">Already have an account ? Login here</button></Link>
         </form>
+        
     )
 }
 
