@@ -5,7 +5,7 @@ const TaskSchema=new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:"User"
     },
-    taskName:{
+    taskname:{
         type:String,
         required:true
     },
@@ -15,8 +15,10 @@ const TaskSchema=new mongoose.Schema({
     },
     duedate:{
         type:Date,
-        required:true,
         default:Date.now
+    },
+    duration:{
+        type:Number,
     },
     description:{
         type:String

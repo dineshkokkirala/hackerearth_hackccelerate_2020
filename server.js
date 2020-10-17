@@ -3,6 +3,7 @@ import colors from "colors";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import userRoutes from "./routes/userRoutes.js";
+import taskRoutes from "./routes/taskRoutes.js";
 
 const app=express();
 
@@ -12,6 +13,7 @@ connectDB();
 
 app.use(express.json());
 app.use("/api/user/",userRoutes);
+app.use("/api/task/",taskRoutes);
 
 
 app.get('/',(req,res)=>{
