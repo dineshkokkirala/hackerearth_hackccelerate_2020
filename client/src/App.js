@@ -9,6 +9,8 @@ import AuthState from "./context/auth/AuthState";
 import setAuthToken from './utils/setAuthToken';
 import AlertState from './context/alert/AlertState';
 import PrivateRoute from './components/routing/PrivateRoute';
+import Health from './components/Health';
+import Fitness from './components/Fitness';
 
 if(localStorage.token){
   setAuthToken(localStorage.token);
@@ -25,12 +27,14 @@ function App() {
        <Navbar />
        <div className="container">
 
-       </div>
        <Switch>
           <Route exact path="/register" component={Register} />
           <PrivateRoute exact path="/" component={Home} />
+          <PrivateRoute exact path="/health" component={Health} />
+          <PrivateRoute exact path="/fitness" component={Fitness} />
           <Route exact path="/login" component={Login} />
        </Switch>
+       </div>
     </Fragment>
       
     </BrowserRouter>

@@ -18,8 +18,8 @@ const Login = (props) => {
     },[error,isAuthenticated,props.history])
 
     const [user,setUser] = useState({
-        email:"",
-        password:"",
+        email:"dinesh@gmail.com",
+        password:"123456",
     })
 
 
