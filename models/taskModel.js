@@ -26,6 +26,10 @@ const TaskSchema=new mongoose.Schema({
     markascomplete:{
         type:Boolean,
         default:false
+    },
+    date:{
+        type:Date,
+        default:Date.now
     }
 
 },{

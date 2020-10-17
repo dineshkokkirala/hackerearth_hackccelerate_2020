@@ -14,7 +14,17 @@ const foodSchema = new mongoose.Schema({
     calories:{
         type:Number,
         default:0
+    },
+    quantity:{
+        type:Number,
+        required:true
+    },
+    date:{
+        type:Date,
+        default:Date.now
     }
+},{
+    timestamps:true
 })
 
 

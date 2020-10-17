@@ -40,7 +40,7 @@ router.post("/",[auth,[
 
 router.get("/current_tasks",auth,async(req,res)=>{
     try {
-        const all_tasks = await Task.find({user:req.user._id,markascomplete:false});
+        const all_tasks = await Task.find({user:req.user._id,markascomplete:false}).sort({date:-1});
         res.json(all_tasks);
     } catch (err) {
         console.log(err.message);
@@ -56,7 +56,7 @@ router.get("/current_tasks",auth,async(req,res)=>{
 
 router.get("/completed_tasks",auth,async(req,res)=>{
     try {
-        const all_tasks = await Task.find({user:req.user._id,markascomplete:true});
+        const all_tasks = await Task.find({user:req.user._id,markascomplete:true}).sort({date:-1});
         if(all_tasks!==null)
             return res.json(all_tasks);
         return res.json({"msg":"No tasks are completed"})

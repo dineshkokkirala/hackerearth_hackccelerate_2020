@@ -25,7 +25,13 @@ const profileSchema = new mongoose.Schema({
     fitnessgoals:{
         type:[String],
         required:true
+    },
+    date:{
+        type:Date,
+        default:Date.now
     }
+},{
+    timestamps:true
 })
 
 const Profile=mongoose.model('Profile',profileSchema);
