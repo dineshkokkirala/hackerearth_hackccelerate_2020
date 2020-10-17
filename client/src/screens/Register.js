@@ -1,10 +1,10 @@
 import React,{useContext,useState,useEffect} from 'react'
 import AuthContext from "../context/auth/authContext";
-import M from "materialize-css"
-
+import AlertContext from "../context/alert/alertContext"
 const Register = (props) => {
     const authContext = useContext(AuthContext);
-
+    const alertContext = useContext(AlertContext);
+    // const {setAlert}=alertContext;
     const {register,error,isAuthenticated,clearErrors} = authContext;
 
     useEffect(() => {
@@ -13,7 +13,8 @@ const Register = (props) => {
         }
     
         if (error === "Email is already exists") {
-          M.toast({html:"User already exists",classes:"red rounded"})
+        //   alertContext.setAlert("User already exists","danger")
+        alert("User already exists")
           clearErrors();
         }
         //eslint-disable-next-line
@@ -36,9 +37,14 @@ const Register = (props) => {
     const onSubmit = (e) =>{
         e.preventDefault();
         if(username===""||email===""||password===""){
-            M.toast({html: 'All fields are required', classes: 'red rounded'});
-        }else if(password!==password2){
-            M.toast({html: 'Passwords must be same', classes: 'red rounded'})
+            // alertContext.setAlert("Please fill all fields", "danger");
+            alert("Please add all fields")
+        }else if(password.length<=5){
+            alert("Password must be atleast 6 characters")
+        }
+        else if(password!==password2){
+            // alertContext.setAlert("Passwords must be same", "danger");
+            alert("Passwords must be same")
         }else{
             register({
                 username,
@@ -50,21 +56,21 @@ const Register = (props) => {
     }
 
     return (
-        <form className="container mt-3 card p-4" style={{width:"500px"}}>
+        <form className="container mt-3 card  p-4" style={{width:"400px"}}>
             <div className="form-group">
-                <label for="username">Username</label>
+                <label htmlFor="username">Username</label>
                 <input type="text" className="form-control" name="username" id="username" onChange={onChange} value={username} />
             </div>
             <div className="form-group">
-                <label for="email">Email</label>
+                <label htmlFor="email">Email</label>
                 <input type="email" className="form-control" name="email" id="email" onChange={onChange} value={email} />
             </div>
             <div className="form-group">
-                <label for="password">Password</label>
-                <input type="password" className="form-control" name="password" id="password" onChange={onChange} value={password} />
+                <label htmlFor="password">Password</label>
+                <input type="password" className="form-control" name="password" id="password" onChange={onChange} value={password} required minLength="6" />
             </div>
             <div className="form-group">
-                <label for="password2">Confirm Password</label>
+                <label htmlFor="password2">Confirm Password</label>
                 <input type="password" className="form-control" name="password2" id="password2" onChange={onChange} value={password2} />
             </div>
             <button className="btn btn-block btn-success" onClick={onSubmit} >Register</button>

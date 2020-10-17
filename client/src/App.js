@@ -7,6 +7,7 @@ import Login from './screens/Login';
 import Home from './screens/Home';
 import AuthState from "./context/auth/AuthState";
 import setAuthToken from './utils/setAuthToken';
+import AlertState from './context/alert/AlertState';
 
 if(localStorage.token){
   setAuthToken(localStorage.token);
@@ -15,6 +16,7 @@ if(localStorage.token){
 function App() {
   return (
     <AuthState>
+<AlertState>
 
     <BrowserRouter>
        <Navbar />
@@ -25,6 +27,7 @@ function App() {
        </Switch>
       
     </BrowserRouter>
+    </AlertState>
     </AuthState>
   );
 }
