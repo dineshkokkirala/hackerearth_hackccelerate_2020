@@ -42,7 +42,7 @@ const Navbar = () => {
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-            <Link className="navbar-brand" to="/">Health & Fitness</Link>
+            <Link className="navbar-brand" to="/"><i className="fas fa-heartbeat"></i> Health & Fitness</Link>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
