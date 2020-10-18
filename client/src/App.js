@@ -12,6 +12,7 @@ import PrivateRoute from './components/routing/PrivateRoute';
 import Health from './components/Health';
 import Fitness from './components/Fitness';
 import Tasks from './components/Tasks';
+import AddTask from './components/AddTask';
 
 if(localStorage.token){
   setAuthToken(localStorage.token);
@@ -34,6 +35,7 @@ function App() {
           <PrivateRoute exact path="/health" component={Health} />
           <PrivateRoute exact path="/fitness" component={Fitness} />
           <PrivateRoute exact path="/tasks" component={Tasks} />
+          <PrivateRoute exact path="/add_task" component={AddTask} />
           <Route exact path="/login" component={Login} />
        </Switch>
        </div>

@@ -37,7 +37,9 @@ const Home = () => {
                 </div>
             </div>
             <div className="row">
-                <button className="btn btn-block btn-success">Start your Task</button>
+                <Link to="add_task" className="btn btn-block btn-success" style={{textDecoration:"none"}}>
+                <button className="btn btn-block btn-success"  >Start your Task</button>
+                </Link>
             </div>
         </div>
     )
