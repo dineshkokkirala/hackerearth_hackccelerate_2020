@@ -11,15 +11,15 @@ const Home = () => {
     return (
         <div className="container">
             <div className="row ff">
-                <div className="col-12 col-md-4">
+                <div className="col-12 col-md-12 col-lg-4">
                     <h1 className="text-center">Health</h1>
                     <Link to="health">
-                    <div className="card m-3 health1 "  style={{backgroundColor:"blue",width:"auto",height:"300px"}}>
+                    <div className="card m-3 health1 "  style={{backgroundColor:"black",width:"auto",height:"300px"}}>
                         
                     </div>
                     </Link>
                 </div>
-                <div className="col-12 col-md-4">
+                <div className="col-12 col-md-12 col-lg-4">
                     <h1 className="text-center">Fitness</h1>
                     <Link to="/fitness">
                     <div className="card m-3 pic" style={{backgroundColor:"black",width:"auto",height:"300px"}}>
@@ -27,10 +27,10 @@ const Home = () => {
                     </div>
                     </Link>
                 </div>
-                <div className="col-12 col-md-4">
+                <div className="col-12 col-md-12 col-lg-4">
                     <h1 className="text-center">Calories Tracker</h1>
                     <Link to="/calories">
-                    <div className="card m-3 calories" style={{backgroundColor:"blue",width:"auto",height:"300px"}}>
+                    <div className="card m-3 calories" style={{backgroundColor:"black",width:"auto",height:"300px"}}>
                         
                     </div>
                     </Link>

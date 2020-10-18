@@ -25,6 +25,7 @@ router.post("/",[auth,[
             duedate,
             duration,description,markascomplete}) 
         await user_task.save();
+        //console.log(user_task)
         res.json(user_task);
     } catch (err) {
         console.log(err.message);

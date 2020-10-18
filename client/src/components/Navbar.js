@@ -14,8 +14,8 @@ const Navbar = () => {
     const authLinks=(
         <Fragment>
             <li className="nav-item active text-light mr-3">Hello {user&&user.username}</li>
-            <Link>
-            <li className="nav-item active text-light mr-3">Your Tasks</li>
+            <Link style={{textDecoration:"none"}} to="/tasks">
+                 <li className="nav-item active text-light mr-3" >Your Tasks</li>
             </Link>
             <li className="nav-item">
                 <a onClick={onLogout} href="#!" style={{textDecoration:"none"}}>
