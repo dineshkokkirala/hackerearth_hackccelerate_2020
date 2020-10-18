@@ -12,13 +12,13 @@ router.post("/",[auth,[
     check("fooditem","Enter Your food Item").not().isEmpty()
 ]],async(req,res)=>{
    
-    const {fooditem,calories}=req.body;
+    const {fooditem,calories,quantity}=req.body;
     const errors = validationResult(req);
     if(!errors.isEmpty()){
         return res.status(400).json({errors:errors.array()});
     }
     try { 
-        const item=new Food({user:req.user._id,fooditem,calories})
+        const item=new Food({user:req.user._id,fooditem,calories,quantity})
         await item.save()
         res.json(item);
     } catch (err) {

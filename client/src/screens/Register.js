@@ -4,7 +4,7 @@ import AlertContext from "../context/alert/alertContext"
 import { Link } from 'react-router-dom';
 const Register = (props) => {
     const authContext = useContext(AuthContext);
-    const alertContext = useContext(AlertContext);
+    // const alertContext = useContext(AlertContext);
     // const {setAlert}=alertContext;
     const {register,error,isAuthenticated,clearErrors} = authContext;
 

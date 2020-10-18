@@ -59,8 +59,8 @@ const AddTask = (props) => {
             </div>
             <div className="form-group">
             <label htmlFor="category">Select your Category</label>
-                <select className="form-control" id="category" name="category" value={category} onChange={onChange}>
-                <option value="health">Select your choice</option>
+                <select className="form-control" id="category" name="category" value={category} onChange={onChange} required>
+                <option>Select your choice</option>
                 <option value="health">Health</option>
                 <option value="fitness">Fitness</option>
                 </select>
