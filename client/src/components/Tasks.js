@@ -2,7 +2,7 @@ import React,{useState,useEffect,useContext} from 'react';
 import axios from "axios";
 import setAuthToken from '../utils/setAuthToken'
 import AuthContext from "../context/auth/authContext";
-
+import "../App.css"
 
 const Tasks = () => {
 
@@ -60,7 +60,8 @@ const Tasks = () => {
         <div className="container">
             <div className="row">
                 <div className="col-12 col-md-6">
-                    <h1>Current Tasks</h1>
+                    <h1 style={{color:"#67e011"}}>Current Tasks</h1>
+
                 
                         {current_tasks.length>0 ? (current_tasks.map((task)=>{
                             //console.log(task);
@@ -68,11 +69,11 @@ const Tasks = () => {
                                
                                 <div className="card p-3 m-4" key={task._id}>
                                     <h1>{task.taskname}</h1>
-                                    <h3>Category : {task.category}</h3>
+                                    <h3> <span className="ff">Category</span>  : {task.category}</h3>
                                     {task.duedate&&<h3>Due Date : {task.duedate.slice(0,10)}</h3>}
-                                    <h3>Duration : {task.duration} min</h3>
+                                    <h3> <span className="ff">Duration</span>  : {task.duration} min</h3>
                                     <h3>
-                                        {task.description && <h3>About Task : {task.description}</h3>}
+                                        {task.description && <h3> <span className="ff">About Task</span>  : {task.description}</h3>}
                                     </h3>
                                     <div className="row">
                                         <div className="col-12 col-md-12 col-lg-6">
@@ -85,12 +86,12 @@ const Tasks = () => {
                                 </div>
                              
                             )
-                        })):(<h3>Loading...</h3>)}
+                        })):(<h3>No Tasks available</h3>)}
                
                     
                 </div>
                 <div className="col-12 col-md-6">
-                    <h1>Completed Tasks</h1>
+                    <h1 style={{color:"#67e011"}}>Completed Tasks</h1>
 
                     {completed_tasks.length>0 ? (completed_tasks.map((task)=>{
                            
@@ -98,11 +99,11 @@ const Tasks = () => {
                                
                                 <div className="card p-3 m-4" key={task._id}>
                                     <h1>{task.taskname}</h1>
-                                    <h3>Category : {task.category}</h3>
+                                    <h3> <span className="ff">Category</span>  : {task.category}</h3>
                                     {task.duedate&&<h3>Due Date : {task.duedate.slice(0,10)}</h3>}
-                                    <h3>Duration : {task.duration} min.</h3>
+                                    <h3> <span className="ff">Duration</span>  : {task.duration} min.</h3>
                                     <h3>
-                                        {task.description && <h3>About Task : {task.description}</h3>}
+                                        {task.description && <h3><span className="ff">About Task</span> : {task.description}</h3>}
                                     </h3>
                                     <div className="row">
                                         
@@ -113,7 +114,7 @@ const Tasks = () => {
                                 </div>
                              
                             )
-                        })):(<h3>Loading...</h3>)}
+                        })):(<h3>No Tasks available</h3>)}
                 </div>
             </div>
         </div>

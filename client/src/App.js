@@ -15,6 +15,7 @@ import Tasks from './components/Tasks';
 import AddTask from './components/AddTask';
 import FoodCalories from './components/FoodCalories';
 import All_Calories from './components/All_Calories';
+import Profile from './components/Profile';
 
 if(localStorage.token){
   setAuthToken(localStorage.token);
@@ -40,6 +41,7 @@ function App() {
           <PrivateRoute exact path="/add_task" component={AddTask} />
           <PrivateRoute exact path="/calories" component={FoodCalories} />
           <PrivateRoute exact path="/calories/all" component={All_Calories} />
+          <PrivateRoute exact path="/profile" component={Profile} />
           <Route exact path="/login" component={Login} />
        </Switch>
        </div>
